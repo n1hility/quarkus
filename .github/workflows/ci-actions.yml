@@ -287,6 +287,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: tmate-cont
+        run: touch continue
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v2
       - name: Set up JDK 11
         # Uses sha for added security since tags can be updated
         uses: joschi/setup-jdk@b9cc6eabf7e7e3889766b5cee486f874c9e1bd2d
