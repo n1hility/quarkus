@@ -62,10 +62,6 @@ jobs:
       - uses: n1hility/cancel-previous-runs@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: tmate-cont
-        run: touch continue
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v2
       - name: Reclaim Disk Space
         run: .github/ci-prerequisites.sh
       - name: Set up JDK 11
@@ -201,10 +197,7 @@ jobs:
             -d ibmcom/db2:11.5.0.0a
 
       - uses: actions/checkout@v2
-      - name: tmate-cont
-        run: touch continue
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v2
+    
 
       - name: apt clean
         shell: bash
@@ -228,6 +221,10 @@ jobs:
       - name: Extract Maven Repo
         shell: bash
         run: tar -xzf maven-repo.tgz -C ~
+      - name: tmate-cont
+        run: touch continue
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v2
       - name: Build with Maven
         run: |
           dmesg -w -T &
