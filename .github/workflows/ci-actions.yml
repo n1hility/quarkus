@@ -223,6 +223,7 @@ jobs:
       - name: Build with Maven
         run: |
           dmesg -w -T &
+          for i in `ps -eo pid,cmd | grep Runner | grep -v grep | awk '{print $1}' | xargs` ; do sudo echo -1000 > /proc/$i/oom_score_adj || true; done
           eval mvn $JVM_TEST_MAVEN_OPTS install ${{ matrix.java.maven_args}}
           #bogus
       - name: Prepare failure archive (if maven failed)
