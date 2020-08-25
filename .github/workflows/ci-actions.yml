@@ -221,7 +221,7 @@ jobs:
       - name: Extract Maven Repo
         shell: bash
         run: tar -xzf maven-repo.tgz -C ~
-      - name: tmate-cont
+      - name: tmate-cont1
         run: touch continue
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v2
