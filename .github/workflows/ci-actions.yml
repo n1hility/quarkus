@@ -62,6 +62,10 @@ jobs:
       - uses: n1hility/cancel-previous-runs@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+      - name: tmate-cont
+        run: touch continue
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v2
       - name: Reclaim Disk Space
         run: .github/ci-prerequisites.sh
       - name: Set up JDK 11
@@ -197,6 +201,10 @@ jobs:
             -d ibmcom/db2:11.5.0.0a
 
       - uses: actions/checkout@v2
+      - name: tmate-cont
+        run: touch continue
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v2
 
       - name: apt clean
         shell: bash
@@ -287,10 +295,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: tmate-cont
-        run: touch continue
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v2
       - name: Set up JDK 11
         # Uses sha for added security since tags can be updated
         uses: joschi/setup-jdk@b9cc6eabf7e7e3889766b5cee486f874c9e1bd2d
