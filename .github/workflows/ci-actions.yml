@@ -228,9 +228,9 @@ jobs:
         shell: bash
         run: tar -xzf maven-repo.tgz -C ~
       - name: Build with Maven
-        run: eval mvn $JVM_TEST_MAVEN_OPTS install ${{ matrix.java.maven_args}} -pl !integration-tests/kubernetes/quarkus-standard-way
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install ${{ matrix.java.maven_args}} -pl !integration-tests/kubernetes/maven-invoker-way -pl !integration-tests/kubernetes/quarkus-standard-way
       - name: Kube tests
-        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/kubernetes/quarkus-standard-way
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/kubernetes/quarkus-standard-way integration-tests/kubernetes/maven-invoker-way
       - name: Prepare failure archive (if maven failed)
         if: failure()
         shell: bash
