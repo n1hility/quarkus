@@ -108,9 +108,10 @@ jobs:
       fail-fast: false
       matrix:
         java :
-          - { name: Java8,
-              java-version: 8,
-              maven_args: "-pl !integration-tests/gradle -pl !integration-tests/kubernetes/quarkus-standard-way"
+          - {
+            name: Java8,
+            java-version: 8,
+            maven_args: "-pl !integration-tests/gradle"
           }
           - {
             name: Java 11,
@@ -120,7 +121,7 @@ jobs:
           - {
             name: Java 14,
             java-version: 14,
-            maven_args: "-pl !integration-tests/gradle -pl !integration-tests/kubernetes/quarkus-standard-way"
+            maven_args: "-pl !integration-tests/gradle"
           }
 
     services:
@@ -227,7 +228,9 @@ jobs:
         shell: bash
         run: tar -xzf maven-repo.tgz -C ~
       - name: Build with Maven
-        run: eval mvn $JVM_TEST_MAVEN_OPTS install ${{ matrix.java.maven_args}}
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install ${{ matrix.java.maven_args}} -pl !integration-tests/kubernetes/quarkus-standard-way
+      - name: Kube tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/kubernetes/quarkus-standard-way
       - name: Prepare failure archive (if maven failed)
         if: failure()
         shell: bash
