@@ -343,8 +343,8 @@ jobs:
         run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/ide-launcher
       # - name: infinispan-cache-jpa tests
       #   run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/infinispan-cache-jpa
-      - name: infinispan-client tests
-        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/infinispan-client
+      # - name: infinispan-client tests
+      #   run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/infinispan-client
       - name: injectmock tests
         run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/injectmock
       - name: jackson tests
