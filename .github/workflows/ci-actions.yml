@@ -227,10 +227,264 @@ jobs:
       - name: Extract Maven Repo
         shell: bash
         run: tar -xzf maven-repo.tgz -C ~
-      - name: Build with Maven
-        run: eval mvn $JVM_TEST_MAVEN_OPTS install ${{ matrix.java.maven_args}} -pl !integration-tests/kubernetes/maven-invoker-way -pl !integration-tests/kubernetes/quarkus-standard-way
-      - name: Kube tests
-        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/kubernetes/quarkus-standard-way integration-tests/kubernetes/maven-invoker-way
+      # - name: Build with Maven
+      #   run: eval mvn $JVM_TEST_MAVEN_OPTS install ${{ matrix.java.maven_args}} -pl !integration-tests/kubernetes/maven-invoker-way -pl !integration-tests/kubernetes/quarkus-standard-way
+      # - name: Kube tests
+      #   run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/kubernetes/quarkus-standard-way integration-tests/kubernetes/maven-invoker-way
+      - name: amazon-lambda tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/amazon-lambda
+      - name: amazon-lambda-http tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/amazon-lambda-http
+      - name: amazon-lambda-http-resteasy tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/amazon-lambda-http-resteasy
+      - name: amazon-lambda-stream-handler tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/amazon-lambda-stream-handler
+      - name: amazon-services tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/amazon-services
+      - name: artemis-core tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/artemis-core
+      - name: artemis-jms tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/artemis-jms
+      - name: bootstrap-config tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/bootstrap-config
+      - name: bootstrap-config/application tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/bootstrap-config/application
+      - name: bootstrap-config/extension tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/bootstrap-config/extension
+      - name: bootstrap-config/extension/deployment tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/bootstrap-config/extension/deployment
+      - name: bootstrap-config/extension/runtime tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/bootstrap-config/extension/runtime
+      - name: cache tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/cache
+      - name: class-transformer tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/class-transformer
+      - name: class-transformer/deployment tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/class-transformer/deployment
+      - name: class-transformer/runtime tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/class-transformer/runtime
+      - name: common-jpa-entities tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/common-jpa-entities
+      - name: consul-config tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/consul-config
+      - name: container-image tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/container-image
+      - name: container-image/maven-invoker-way tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/container-image/maven-invoker-way
+      - name: container-image/quarkus-standard-way tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/container-image/quarkus-standard-way
+      - name: devmode tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/devmode
+      - name: devtools tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/devtools
+      - name: elasticsearch-rest-client tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/elasticsearch-rest-client
+      - name: elasticsearch-rest-high-level-client tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/elasticsearch-rest-high-level-client
+      - name: elytron-resteasy tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/elytron-resteasy
+      - name: elytron-security tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/elytron-security
+      - name: elytron-security-jdbc tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/elytron-security-jdbc
+      - name: elytron-security-ldap tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/elytron-security-ldap
+      - name: elytron-security-oauth2 tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/elytron-security-oauth2
+      - name: elytron-undertow tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/elytron-undertow
+      - name: flyway tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/flyway
+      - name: funqy-amazon-lambda tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/funqy-amazon-lambda
+      - name: funqy-google-cloud-functions tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/funqy-google-cloud-functions
+      - name: google-cloud-functions tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/google-cloud-functions
+      - name: google-cloud-functions-http tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/google-cloud-functions-http
+      - name: gradle tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/gradle
+      - name: grpc-health tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/grpc-health
+      - name: grpc-interceptors tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/grpc-interceptors
+      - name: grpc-mutual-auth tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/grpc-mutual-auth
+      - name: grpc-plain-text tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/grpc-plain-text
+      - name: grpc-proto-v2 tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/grpc-proto-v2
+      - name: grpc-streaming tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/grpc-streaming
+      - name: grpc-tls tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/grpc-tls
+      - name: hibernate-orm-envers tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/hibernate-orm-envers
+      - name: hibernate-orm-panache tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/hibernate-orm-panache
+      - name: hibernate-orm-panache-kotlin tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/hibernate-orm-panache-kotlin
+      - name: hibernate-orm-rest-data-panache tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/hibernate-orm-rest-data-panache
+      - name: hibernate-reactive-db2 tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/hibernate-reactive-db2
+      - name: hibernate-reactive-mysql tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/hibernate-reactive-mysql
+      - name: hibernate-reactive-postgresql tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/hibernate-reactive-postgresql
+      - name: hibernate-search-elasticsearch tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/hibernate-search-elasticsearch
+      - name: hibernate-tenancy tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/hibernate-tenancy
+      - name: hibernate-validator tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/hibernate-validator
+      - name: ide-launcher tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/ide-launcher
+      - name: infinispan-cache-jpa tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/infinispan-cache-jpa
+      - name: infinispan-client tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/infinispan-client
+      - name: injectmock tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/injectmock
+      - name: jackson tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/jackson
+      - name: jgit tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/jgit
+      - name: jpa tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/jpa
+      - name: jpa-db2 tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/jpa-db2
+      - name: jpa-derby tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/jpa-derby
+      - name: jpa-h2 tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/jpa-h2
+      - name: jpa-mariadb tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/jpa-mariadb
+      - name: jpa-mssql tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/jpa-mssql
+      - name: jpa-mysql tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/jpa-mysql
+      - name: jpa-postgresql tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/jpa-postgresql
+      - name: jpa-without-entity tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/jpa-without-entity
+      - name: jsch tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/jsch
+      - name: jsonb tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/jsonb
+      - name: kafka tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/kafka
+      - name: kafka-avro tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/kafka-avro
+      - name: kafka-streams tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/kafka-streams
+      - name: keycloak-authorization tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/keycloak-authorization
+      - name: kotlin tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/kotlin
+      - name: kubernetes tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/kubernetes
+      - name: kubernetes-client tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/kubernetes-client
+      - name: kubernetes/maven-invoker-way tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/kubernetes/maven-invoker-way
+      - name: kubernetes/quarkus-standard-way tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/kubernetes/quarkus-standard-way
+      - name: liquibase tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/liquibase
+      - name: logging-gelf tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/logging-gelf
+      - name: main tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/main
+      - name: maven tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/maven
+      - name: mongodb-client tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/mongodb-client
+      - name: mongodb-panache tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/mongodb-panache
+      - name: mongodb-panache-kotlin tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/mongodb-panache-kotlin
+      - name: narayana-jta tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/narayana-jta
+      - name: narayana-stm tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/narayana-stm
+      - name: neo4j tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/neo4j
+      - name: oidc tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/oidc
+      - name: oidc-code-flow tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/oidc-code-flow
+      - name: oidc-tenancy tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/oidc-tenancy
+      - name: packaging tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/packaging
+      - name: picocli tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/picocli
+      - name: picocli-native tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/picocli-native
+      - name: quartz tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/quartz
+      - name: qute tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/qute
+      - name: reactive-db2-client tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/reactive-db2-client
+      - name: reactive-messaging-amqp tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/reactive-messaging-amqp
+      - name: reactive-mysql-client tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/reactive-mysql-client
+      - name: reactive-pg-client tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/reactive-pg-client
+      - name: redis-client tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/redis-client
+      - name: rest-client tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/rest-client
+      - name: resteasy-jackson tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/resteasy-jackson
+      - name: resteasy-mutiny tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/resteasy-mutiny
+      - name: scala tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/scala
+      - name: shared-library tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/shared-library
+      - name: smallrye-context-propagation tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/smallrye-context-propagation
+      - name: smallrye-graphql tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/smallrye-graphql
+      - name: spring-boot-properties tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/spring-boot-properties
+      - name: spring-cloud-config-client tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/spring-cloud-config-client
+      - name: spring-data-jpa tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/spring-data-jpa
+      - name: spring-di tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/spring-di
+      - name: spring-web tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/spring-web
+      - name: test-extension tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/test-extension
+      - name: tika tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/tika
+      - name: vault tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/vault
+      - name: vault-agroal tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/vault-agroal
+      - name: vault-app tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/vault-app
+      - name: vertx tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/vertx
+      - name: vertx-graphql tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/vertx-graphql
+      - name: vertx-http tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/vertx-http
+      - name: vertx-web tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/vertx-web
+      - name: virtual-http tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/virtual-http
+      - name: virtual-http-resteasy tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/virtual-http-resteasy
+      - name: webjars-locator tests
+        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/webjars-locator
       - name: Prepare failure archive (if maven failed)
         if: failure()
         shell: bash
