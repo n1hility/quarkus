@@ -233,6 +233,52 @@ jobs:
       #   run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/kubernetes/quarkus-standard-way integration-tests/kubernetes/maven-invoker-way
       - name: Build
         run: mvn -e -B -DskipTests -DskipITs -Dno-format install
+      - name: Unit tests & Catch All 
+        run:   |
+            eval MVN $JVM_TEST_MAVEN_OPTS install \
+            -pl !integration-tests/amazon-lambda -pl !integration-tests/amazon-lambda-http -pl !integration-tests/amazon-lambda-http-resteasy \
+            -pl !integration-tests/amazon-lambda-stream-handler -pl !integration-tests/amazon-services -pl !integration-tests/artemis-core \
+            -pl !integration-tests/artemis-jms -pl !integration-tests/bootstrap-config -pl !integration-tests/bootstrap-config/application \
+            -pl !integration-tests/bootstrap-config/extension -pl !integration-tests/bootstrap-config/extension/deployment -pl !integration-tests/bootstrap-config/extension/runtime \
+            -pl !integration-tests/cache -pl !integration-tests/class-transformer -pl !integration-tests/class-transformer/deployment \
+            -pl !integration-tests/class-transformer/runtime -pl !integration-tests/common-jpa-entities -pl !integration-tests/consul-config \
+            -pl !integration-tests/container-image -pl !integration-tests/container-image/maven-invoker-way -pl !integration-tests/container-image/quarkus-standard-way \
+            -pl !integration-tests/devmode -pl !integration-tests/devtools -pl !integration-tests/elasticsearch-rest-client \
+            -pl !integration-tests/elasticsearch-rest-high-level-client -pl !integration-tests/elytron-resteasy -pl !integration-tests/elytron-security \
+            -pl !integration-tests/elytron-security-jdbc -pl !integration-tests/elytron-security-ldap -pl !integration-tests/elytron-security-oauth2 \
+            -pl !integration-tests/elytron-undertow -pl !integration-tests/flyway -pl !integration-tests/funqy-amazon-lambda \
+            -pl !integration-tests/funqy-google-cloud-functions -pl !integration-tests/google-cloud-functions -pl !integration-tests/google-cloud-functions-http \
+            -pl !integration-tests/gradle -pl !integration-tests/grpc-health -pl !integration-tests/grpc-interceptors \
+            -pl !integration-tests/grpc-mutual-auth -pl !integration-tests/grpc-plain-text -pl !integration-tests/grpc-proto-v2 \
+            -pl !integration-tests/grpc-streaming -pl !integration-tests/grpc-tls -pl !integration-tests/hibernate-orm-envers \
+            -pl !integration-tests/hibernate-orm-panache -pl !integration-tests/hibernate-orm-panache-kotlin -pl !integration-tests/hibernate-orm-rest-data-panache \
+            -pl !integration-tests/hibernate-reactive-db2 -pl !integration-tests/hibernate-reactive-mysql -pl !integration-tests/hibernate-reactive-postgresql \
+            -pl !integration-tests/hibernate-search-elasticsearch -pl !integration-tests/hibernate-tenancy -pl !integration-tests/hibernate-validator \
+            -pl !integration-tests/ide-launcher -pl !integration-tests/infinispan-cache-jpa -pl !integration-tests/infinispan-client \
+            -pl !integration-tests/injectmock -pl !integration-tests/jackson -pl !integration-tests/jgit \
+            -pl !integration-tests/jpa -pl !integration-tests/jpa-db2 -pl !integration-tests/jpa-derby \
+            -pl !integration-tests/jpa-h2 -pl !integration-tests/jpa-mariadb -pl !integration-tests/jpa-mssql \
+            -pl !integration-tests/jpa-mysql -pl !integration-tests/jpa-postgresql -pl !integration-tests/jpa-without-entity \
+            -pl !integration-tests/jsch -pl !integration-tests/jsonb -pl !integration-tests/kafka \
+            -pl !integration-tests/kafka-avro -pl !integration-tests/kafka-streams -pl !integration-tests/keycloak-authorization \
+            -pl !integration-tests/kotlin -pl !integration-tests/kubernetes -pl !integration-tests/kubernetes-client \
+            -pl !integration-tests/kubernetes/maven-invoker-way -pl !integration-tests/kubernetes/quarkus-standard-way -pl !integration-tests/liquibase \
+            -pl !integration-tests/logging-gelf -pl !integration-tests/main -pl !integration-tests/maven \
+            -pl !integration-tests/mongodb-client -pl !integration-tests/mongodb-panache -pl !integration-tests/mongodb-panache-kotlin \
+            -pl !integration-tests/narayana-jta -pl !integration-tests/narayana-stm -pl !integration-tests/neo4j \
+            -pl !integration-tests/oidc -pl !integration-tests/oidc-code-flow -pl !integration-tests/oidc-tenancy \
+            -pl !integration-tests/packaging -pl !integration-tests/picocli -pl !integration-tests/picocli-native \
+            -pl !integration-tests/quartz -pl !integration-tests/qute -pl !integration-tests/reactive-db2-client \
+            -pl !integration-tests/reactive-messaging-amqp -pl !integration-tests/reactive-mysql-client -pl !integration-tests/reactive-pg-client \
+            -pl !integration-tests/redis-client -pl !integration-tests/rest-client -pl !integration-tests/resteasy-jackson \
+            -pl !integration-tests/resteasy-mutiny -pl !integration-tests/scala -pl !integration-tests/shared-library \
+            -pl !integration-tests/smallrye-context-propagation -pl !integration-tests/smallrye-graphql -pl !integration-tests/spring-boot-properties \
+            -pl !integration-tests/spring-cloud-config-client -pl !integration-tests/spring-data-jpa -pl !integration-tests/spring-di \
+            -pl !integration-tests/spring-web -pl !integration-tests/test-extension -pl !integration-tests/tika \
+            -pl !integration-tests/vault -pl !integration-tests/vault-agroal -pl !integration-tests/vault-app \
+            -pl !integration-tests/vertx -pl !integration-tests/vertx-graphql -pl !integration-tests/vertx-http \
+            -pl !integration-tests/vertx-web -pl !integration-tests/virtual-http -pl !integration-tests/virtual-http-resteasy \
+            -pl !integration-tests/webjars-locator
       - name: amazon-lambda tests
         run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/amazon-lambda
       - name: amazon-lambda-http tests
@@ -305,8 +351,6 @@ jobs:
         run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/google-cloud-functions
       - name: google-cloud-functions-http tests
         run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/google-cloud-functions-http
-      - name: gradle tests
-        run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/gradle
       - name: grpc-health tests
         run: eval mvn $JVM_TEST_MAVEN_OPTS install -pl integration-tests/grpc-health
       - name: grpc-interceptors tests
